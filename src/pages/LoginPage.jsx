@@ -13,21 +13,25 @@ const LoginPage = () => {
     <div className="container mx-auto mt-10 text-center">
       <h1 className="mb-4 text-2xl">Login Page</h1>
 
-      <p className="mb-2">Go to Private page</p>
+      {!state.isAuthenticated && <p>Login to see the private page route</p>}
+
       {state.isAuthenticated && (
-        <Link
-          className="px-4 py-2 font-bold text-white bg-blue-500 rounded-lg hover:bg-blue-700"
-          to="/private"
-        >
-          Private Page
-        </Link>
+        <>
+          <p className="mb-2">Go to Private page</p>
+          <Link
+            className="px-4 py-2 font-bold text-white bg-blue-500 rounded-lg hover:bg-blue-700"
+            to="/private"
+          >
+            Private Page
+          </Link>
+        </>
       )}
 
       <div className="mb-4 " />
 
       {state.isAuthenticated ? (
         <div className="mt-10 ">
-          <p className="mb-2">you already logged in, you can logout</p>
+          <p className="mb-2">you are logged in, you can logout</p>
           <button
             type="button"
             onClick={handleLogout}
